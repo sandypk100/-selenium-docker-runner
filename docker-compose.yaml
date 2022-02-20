@@ -31,7 +31,7 @@ services:
     depends_on:
       - node-docker
     environment:
-      - browser=chrome
+      - browser=firefox
       - module=testng-suite.xml
     volumes:
       - D:\\grid4\\google-result1:/usr/share/udemy/test-output
