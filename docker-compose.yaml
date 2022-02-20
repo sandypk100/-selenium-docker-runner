@@ -1,22 +1,47 @@
-# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3.yml up`
+# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3-video.yml up`
 # Add the `-d` flag at the end for detached execution
-# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3.yml down`
-# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3-dynamic-grid.yml up`
-# Add the `-d` flag at the end for detached execution
-# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3-dynamic-grid.yml down`
+# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3-video.yml down`
 version: "3"
 services:
-  node-docker:
-    image: selenium/node-docker:4.1.2-20220208
-    volumes:
-      - D:\\grid4:/opt/selenium/assets
-      - D:\\grid4\\config.toml:/opt/bin/config.toml
+  chrome:
+    image: selenium/node-chrome:4.1.2-20220208
+    shm_size: 2gb
     depends_on:
       - selenium-hub
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  firefox:
+    image: selenium/node-firefox:4.1.2-20220208
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  chrome_video:
+    image: selenium/video:ffmpeg-4.3.1-20220208
+    volumes:
+      - D:\\grid4:/videos
+    depends_on:
+      - chrome
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome
+      - FILE_NAME=chrome_video.mp4
+
+  firefox_video:
+    image: selenium/video:ffmpeg-4.3.1-20220208
+    volumes:
+      - D:\\grid4:/videos
+    depends_on:
+      - firefox
+    environment:
+      - DISPLAY_CONTAINER_NAME=firefox
+      - FILE_NAME=firefox_video.mp4
 
   selenium-hub:
     image: selenium/hub:4.1.2-20220208
@@ -29,9 +54,10 @@ services:
   google-module:
     image: boot_openjdk11_new10/spring-tests
     depends_on:
-      - node-docker
+      - chrome
+      - firefox
     environment:
-      - browser=firefox
+      - browser=chrome
       - module=testng-suite.xml
     volumes:
-      - D:\\grid4\\google-result1:/usr/share/udemy/test-output
+      - D:\\grid4\\google-result2:/usr/share/udemy/test-output
