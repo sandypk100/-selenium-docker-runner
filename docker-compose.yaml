@@ -57,7 +57,7 @@ services:
       - chrome
       - firefox
     environment:
-      - browser=chrome
+      - browser=firefox
       - module=testng-suite.xml
     volumes:
       - D:\\grid4\\google-result2:/usr/share/udemy/test-output
