@@ -12,6 +12,8 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
 
   firefox:
     image: selenium/node-firefox:4.1.2-20220208
@@ -42,10 +44,14 @@ services:
     environment:
       - DISPLAY_CONTAINER_NAME=firefox
       - FILE_NAME=firefox_video.mp4
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
 
   selenium-hub:
     image: selenium/hub:4.1.2-20220208
     container_name: selenium-hub
+    environment:
+    - GRID_MAX_SESSION=5
     ports:
       - "4442:4442"
       - "4443:4443"
