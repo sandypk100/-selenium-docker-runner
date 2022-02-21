@@ -33,8 +33,7 @@ services:
   google-module:
     image: boot_openjdk11_new14/spring-tests
     depends_on:
-      - chrome
-      - firefox
+      - node-docker
     environment:
       - browser=firefox
       - module=testng-suite.xml
