@@ -58,7 +58,7 @@ services:
       - "4444:4444"
 
   google-module:
-    image: boot_openjdk11_new12/spring-tests
+    image: boot_openjdk11_new13/spring-tests
     depends_on:
       - chrome
       - firefox
