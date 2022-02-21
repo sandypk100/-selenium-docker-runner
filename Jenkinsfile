@@ -5,7 +5,7 @@ pipeline {
         stage('Start Grid') {
             steps {
                 //sh
-                bat "docker-compose up --scale node-docker=4"
+                bat "docker-compose up -d --scale node-docker=4"
             }
         }
         
