@@ -20,48 +20,6 @@ services:
       - NODE_MAX_INSTANCES=20
       - NODE_MAX_SESSION=20
       
-  chrome_video_1:
-    image: selenium/video:ffmpeg-4.3.1-20220208
-    volumes:
-      - D:\\grid4\\video_test:/videos
-    depends_on:
-      - node-docker
-    environment:
-      - DISPLAY_CONTAINER_NAME=chrome
-      - FILE_NAME=chrome_video_1.mp4
-      
-  chrome_video_2:
-    image: selenium/video:ffmpeg-4.3.1-20220208
-    volumes:
-      - D:\\grid4\\video_test:/videos
-    depends_on:
-      - node-docker
-    environment:
-      - DISPLAY_CONTAINER_NAME=chrome
-      - FILE_NAME=chrome_video_2.mp4
-      
-  chrome_video_3:
-    image: selenium/video:ffmpeg-4.3.1-20220208
-    volumes:
-      - D:\\grid4\\video_test:/videos
-    depends_on:
-      - node-docker
-    environment:
-      - DISPLAY_CONTAINER_NAME=chrome
-      - FILE_NAME=chrome_video_3.mp4
-      
-  chrome_video_4:
-    image: selenium/video:ffmpeg-4.3.1-20220208
-    volumes:
-      - D:\\grid4\\video_test:/videos
-    depends_on:
-      - node-docker
-    environment:
-      - DISPLAY_CONTAINER_NAME=chrome
-      - FILE_NAME=chrome_video_4.mp4
-      
- 
-
   selenium-hub:
     image: selenium/hub:4.1.2-20220208
     container_name: selenium-hub
