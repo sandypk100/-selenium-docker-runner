@@ -11,7 +11,7 @@ configs = ["selenium/standalone-firefox:4.0.0-rc-1-prerelease-20210804", "{\"bro
 # socat -4 TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock
 url = "http://host.docker.internal:2375"
 # Docker image used for video
-recordingvideo-image = "selenium/video:ffmpeg-4.3.1-20210804"
+recordingvideo-image = "selenium/video:ffmpeg-4.3.1-20220208"
 # Uncomment the following if running the node on a separate VM
 # Fill out the placeholders with appropriate values
 #[server]
