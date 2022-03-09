@@ -5,7 +5,7 @@ pipeline {
         stage('Start Grid') {
             steps {
                 //sh
-                bat "docker-compose up -d selenium-hub node-docker"
+                bat "docker-compose up -d selenium-hub node-docker chrome_video_1 chrome_video_2 chrome_video_3 chrome_video_4"
             }
         }
         
