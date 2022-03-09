@@ -29,6 +29,15 @@ services:
       - "4444:4444"
     environment:
       - GRID_MAX_SESSION=20
+      
+  chrome_video:
+    image: selenium/video:ffmpeg-4.3.1-20220208
+    volumes:
+      - D:\\grid4\\video_test:/videos
+    depends_on:
+      - node-docker
+    environment:
+      - FILE_NAME=chrome_video.mp4
 
   google-module:
     image: springbootdocker_latest1/selenium-tests
