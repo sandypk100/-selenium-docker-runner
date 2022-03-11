@@ -5,7 +5,7 @@ pipeline {
         
         stage('pull latest image') {
 	        steps {
-		        bat "docker pull sandocker100/springboot:latest"
+		        bat "docker pull sandocker100/springboot:6"
 	    }
 	}
         stage('Start Grid') {
