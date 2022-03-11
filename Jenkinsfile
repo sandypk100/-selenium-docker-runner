@@ -2,6 +2,12 @@ pipeline {
     // master executor should be set to 0
     agent any
     stages {
+        
+        stage('pull latest image') {
+	        steps {
+		        bat "docker pull sandocker100/springboot:latest"
+	    }
+	}
         stage('Start Grid') {
             steps {
                 //sh
