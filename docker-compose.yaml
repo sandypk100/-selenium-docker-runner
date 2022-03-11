@@ -9,7 +9,7 @@ services:
   node-docker:
     image: selenium/node-docker:4.1.2-20220208
     volumes:
-      - D:\\grid4:/opt/selenium/assets
+      - D:\\grid4\\video_test2:/opt/selenium/assets
       - D:\\grid4\\config.toml:/opt/bin/config.toml
     depends_on:
       - selenium-hub
@@ -40,7 +40,7 @@ services:
       - FILE_NAME=chrome_video.mp4
 
   google-module:
-    image: springbootdocker_latest1/selenium-tests
+    image: springbootdocker_latest2/selenium-tests
     depends_on:
       - node-docker
     environment:
