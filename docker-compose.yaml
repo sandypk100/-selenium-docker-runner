@@ -31,7 +31,7 @@ services:
       - GRID_MAX_SESSION=20
       
   google-module:
-    image: sandocker100/springboot:7
+    image: springbootdocker_latest105/selenium-tests
     depends_on:
       - node-docker
     environment:
